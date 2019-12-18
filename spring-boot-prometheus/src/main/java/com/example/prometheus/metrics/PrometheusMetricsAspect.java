@@ -74,7 +74,6 @@ public class PrometheusMetricsAspect {
                     .tags( prometheusMetrics.extraTags() )
                     .tags( EXCEPTION_TAG, exceptionClass )
                     .register( meterRegistry ) );
-            exceptionCounterIncrement();
         }
         return result;
     }
