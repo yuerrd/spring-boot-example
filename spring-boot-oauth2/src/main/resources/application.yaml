@@ -3,9 +3,3 @@ server:
 spring:
   application:
     name: oauth2-server
-  security:
-    user:
-      # ÕËºÅ
-      name: root
-      # ÃÜÂë
-      password: 123456
