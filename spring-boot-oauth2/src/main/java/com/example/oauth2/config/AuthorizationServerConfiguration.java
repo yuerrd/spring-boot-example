@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 
 /**
  * @author yangyong
@@ -30,10 +31,18 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 //配置刷新token的有效期
                 .refreshTokenValiditySeconds( 864000 )
                 //配置redirect_uri，用于授权成功后跳转
-                .redirectUris("https://open.bot.tmall.com/oauth/callback" )
+                .redirectUris( "https://open.bot.tmall.com/oauth/callback" )
                 //配置申请的权限范围
                 .scopes( "all" )
                 //配置grant_type，表示授权类型
                 .authorizedGrantTypes( "authorization_code", "refresh_token" );
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        super.configure( security );
+        security.tokenKeyAccess( "permitAll()" ).checkTokenAccess( "permitAll()" );
+        //允许表单认证
+        security.allowFormAuthenticationForClients();
     }
 }
