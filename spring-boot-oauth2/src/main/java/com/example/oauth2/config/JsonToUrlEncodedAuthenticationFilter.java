@@ -18,6 +18,9 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Objects;
 
+/**
+ * @author yangyong
+ */
 @Component
 @Order(value = Integer.MIN_VALUE)
 public class JsonToUrlEncodedAuthenticationFilter implements Filter {
