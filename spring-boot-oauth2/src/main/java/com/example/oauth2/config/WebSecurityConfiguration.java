@@ -3,6 +3,7 @@ package com.example.oauth2.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,20 +35,29 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth
                 .inMemoryAuthentication()
                 // 在内存中创建用户并为密码加密
-                .withUser( "user" )
-                .password( passwordEncoder().encode( "123456" ) )
-                .roles( "USER" )
+                .withUser("user")
+                .password(passwordEncoder().encode("123456"))
+                .roles("USER")
                 .and()
-                .withUser( "admin" )
-                .password( passwordEncoder().encode( "123456" ) )
-                .authorities( "admin" );
+                .withUser("admin")
+                .password(passwordEncoder().encode("123456"))
+                .authorities("admin");
 
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure( http );
         http
-                .addFilterBefore( jsonFilter, ChannelProcessingFilter.class );
+                .addFilterBefore(jsonFilter, ChannelProcessingFilter.class)
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/api/aligenie").permitAll()
+                .antMatchers("/oauth/**").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .and()
+                .csrf().disable()
+                .httpBasic();
     }
 }

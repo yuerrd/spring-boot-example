@@ -24,7 +24,8 @@ public class DeviceServiceImpl implements IDeviceService {
         devicesEntity.setDeviceId("0001");
         devicesEntity.setDeviceName("灯");
         devicesEntity.setDeviceType("light");
-        devicesEntity.setIcon("https://git.cn-hangzhou.oss-cdn.aliyun-inc.com/uploads/aicloud/aicloud-proxy-service/41baa00903a71c97e3533cf4e19a88bba88bb/image.png");
+        devicesEntity.setIcon("https://git.cn-hangzhou.oss-cdn.aliyun-inc" +
+                ".com/uploads/aicloud/aicloud-proxy-service/41baa00903a71c97e3533cf4e19a88bba88bb/image.png");
 
         List<Propertie> properties = new ArrayList<>();
         properties.add(new Propertie("powerstate", "off"));
@@ -34,6 +35,7 @@ public class DeviceServiceImpl implements IDeviceService {
         actions.add("TurnOn");
         actions.add("TurnOff");
         devicesEntity.setActions(actions);
+        devicesEntityList.add(devicesEntity);
 
         responseDiscoveryEntity.setDevices(devicesEntityList);
         return responseDiscoveryEntity;
