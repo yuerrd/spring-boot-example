@@ -5,11 +5,11 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Propertie {
+public class Property {
     private String name;
     private String value;
 
-    public Propertie(String name, String value) {
+    public Property(String name, String value) {
         this.name = name;
         this.value = value;
     }

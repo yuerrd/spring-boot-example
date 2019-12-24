@@ -45,7 +45,7 @@ public class DevicesDTO implements Serializable {
     /**
      * 属性状态列表
      */
-    List<Propertie> properties;
+    List<Property> properties;
     /**
      * 产品支持的操作
      */

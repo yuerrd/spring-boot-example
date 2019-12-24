@@ -27,8 +27,8 @@ public class DeviceServiceImpl implements IDeviceService {
         devicesEntity.setDeviceType("light");
         devicesEntity.setIcon("https://git.cn-hangzhou.oss-cdn.aliyun-inc" +
                 ".com/uploads/aicloud/aicloud-proxy-service/41baa00903a71c97e3533cf4e19a88bba88bb/image.png");
-        List<Propertie> properties = new ArrayList<>();
-        properties.add(new Propertie("powerstate", "off"));
+        List<Property> properties = new ArrayList<>();
+        properties.add(new Property("powerstate", "off"));
         devicesEntity.setProperties(properties);
         Set<String> actions = new HashSet<>();
         actions.add("TurnOn");
