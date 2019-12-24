@@ -1,4 +1,4 @@
-package com.example.oauth2.dto;
+package com.example.oauth2.dto.aligenie;
 
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;

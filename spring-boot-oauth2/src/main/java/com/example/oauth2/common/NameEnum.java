@@ -1,5 +1,9 @@
 package com.example.oauth2.common;
 
+/**
+ * @author yangyong
+ */
+
 public enum NameEnum {
     DISCOVERY_DEVICES("DiscoveryDevices"),
     DISCOVERY_DEVICES_RESPONSE("DiscoveryDevicesResponse"),

@@ -8,18 +8,21 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author yangyong
+ */
 public class MyServletRequestWrapper extends HttpServletRequestWrapper {
     private final HashMap<String, String[]> params;
 
     public MyServletRequestWrapper(HttpServletRequest request, HashMap<String, String[]> params) {
-        super( request );
+        super(request);
         this.params = params;
     }
 
     @Override
     public String getParameter(String name) {
-        if (this.params.containsKey( name )) {
-            return this.params.get( name )[0];
+        if (this.params.containsKey(name)) {
+            return this.params.get(name)[0];
         }
         return "";
     }
@@ -31,11 +34,11 @@ public class MyServletRequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public Enumeration<String> getParameterNames() {
-        return new Enumerator<>( params.keySet() );
+        return new Enumerator<>(params.keySet());
     }
 
     @Override
     public String[] getParameterValues(String name) {
-        return params.get( name );
+        return params.get(name);
     }
 }

@@ -1,7 +1,13 @@
 package com.example.oauth2.service.impl;
 
 import com.example.oauth2.common.NameEnum;
-import com.example.oauth2.dto.*;
+import com.example.oauth2.dto.aligenie.AliGenieDTO;
+import com.example.oauth2.dto.aligenie.ControlRspDTO;
+import com.example.oauth2.dto.aligenie.DevicesDTO;
+import com.example.oauth2.dto.aligenie.DiscoveryRspDTO;
+import com.example.oauth2.dto.aligenie.Header;
+import com.example.oauth2.dto.aligenie.Property;
+import com.example.oauth2.dto.aligenie.ReqPayload;
 import com.example.oauth2.service.IDeviceService;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +22,9 @@ import java.util.Set;
 @Service
 public class DeviceServiceImpl implements IDeviceService {
     @Override
-    public BaseAliGenieDTO<DiscoveryRspDTO> getDevices(BaseAliGenieDTO<AliGenieReqPayload> aliGenieDTO) {
+    public AliGenieDTO<DiscoveryRspDTO> getDevices(AliGenieDTO<ReqPayload> aliGenieDTO) {
 
-        BaseAliGenieDTO<DiscoveryRspDTO> result = new BaseAliGenieDTO<>();
+        AliGenieDTO<DiscoveryRspDTO> result = new AliGenieDTO<>();
         DiscoveryRspDTO discoveryRspDTO = new DiscoveryRspDTO();
         List<DevicesDTO> devicesEntityList = new ArrayList<>();
         DevicesDTO devicesEntity = new DevicesDTO();
@@ -38,10 +44,23 @@ public class DeviceServiceImpl implements IDeviceService {
         discoveryRspDTO.setDevices(devicesEntityList);
 
         result.setPayload(discoveryRspDTO);
-        AliGenieHeader header = aliGenieDTO.getHeader();
+        Header header = aliGenieDTO.getHeader();
         header.setName(NameEnum.DISCOVERY_DEVICES_RESPONSE.toValue());
         result.setHeader(header);
 
+
+        return result;
+    }
+
+    @Override
+    public AliGenieDTO<ControlRspDTO> controlDevices(AliGenieDTO<ReqPayload> aliGenieDTO) {
+        AliGenieDTO<ControlRspDTO> result = new AliGenieDTO<>();
+
+        Header header = aliGenieDTO.getHeader();
+
+        header.setName(header.getName() + "Response");
+        result.setHeader(header);
+        result.setPayload(new ControlRspDTO(aliGenieDTO.getPayload().getDeviceId()));
 
         return result;
     }

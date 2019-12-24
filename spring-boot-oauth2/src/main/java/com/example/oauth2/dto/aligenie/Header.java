@@ -1,4 +1,4 @@
-package com.example.oauth2.dto;
+package com.example.oauth2.dto.aligenie;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author yangyong
  */
 @Data
-public class AliGenieHeader implements Serializable {
+public class Header implements Serializable {
     private static final long serialVersionUID = 8846082800155723320L;
     private String namespace;
     private String name;

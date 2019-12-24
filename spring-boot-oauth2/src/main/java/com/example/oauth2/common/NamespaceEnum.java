@@ -1,5 +1,9 @@
 package com.example.oauth2.common;
 
+/**
+ * @author yangyong
+ */
+
 public enum NamespaceEnum {
     DISCOVERY("AliGenie.Iot.Device.Discovery"),
     CONTROL("AliGenie.Iot.Device.Control"),

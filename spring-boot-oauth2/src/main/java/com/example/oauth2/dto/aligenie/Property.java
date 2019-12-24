@@ -1,8 +1,11 @@
-package com.example.oauth2.dto;
+package com.example.oauth2.dto.aligenie;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author yangyong
+ */
 @Data
 @NoArgsConstructor
 public class Property {
