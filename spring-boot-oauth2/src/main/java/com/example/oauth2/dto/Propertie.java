@@ -1,4 +1,4 @@
-package com.example.oauth2.entity;
+package com.example.oauth2.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

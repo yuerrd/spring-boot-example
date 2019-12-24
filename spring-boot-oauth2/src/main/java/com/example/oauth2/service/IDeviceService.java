@@ -1,6 +1,8 @@
 package com.example.oauth2.service;
 
-import com.example.oauth2.entity.ResponseDiscoveryEntity;
+import com.example.oauth2.dto.AliGenieReqPayload;
+import com.example.oauth2.dto.BaseAliGenieDTO;
+import com.example.oauth2.dto.DiscoveryRspDTO;
 
 /**
  * @author yangyong
@@ -12,5 +14,5 @@ public interface IDeviceService {
      *
      * @return
      */
-    ResponseDiscoveryEntity getDevices();
+    BaseAliGenieDTO<DiscoveryRspDTO> getDevices(BaseAliGenieDTO<AliGenieReqPayload> aliGenieDTO);
 }

@@ -1,6 +1,6 @@
 package com.example.oauth2.common;
 
-public enum HeaderNameEnum {
+public enum NameEnum {
     DISCOVERY_DEVICES("DiscoveryDevices"),
     DISCOVERY_DEVICES_RESPONSE("DiscoveryDevicesResponse"),
     TURN_ON("TurnOn"),
@@ -11,7 +11,7 @@ public enum HeaderNameEnum {
         return value;
     }
 
-    HeaderNameEnum(String value) {
+    NameEnum(String value) {
         this.value = value;
     }
 }

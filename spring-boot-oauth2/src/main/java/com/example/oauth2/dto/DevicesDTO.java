@@ -1,6 +1,5 @@
-package com.example.oauth2.entity;
+package com.example.oauth2.dto;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
@@ -12,7 +11,7 @@ import java.util.Set;
  * @author yangyong
  */
 @Data
-public class DevicesEntity implements Serializable {
+public class DevicesDTO implements Serializable {
     private static final long serialVersionUID = -2189650883612430796L;
     /**
      * 设备Id
