@@ -9,7 +9,9 @@ import com.example.oauth2.dto.aligenie.Header;
 import com.example.oauth2.dto.aligenie.Property;
 import com.example.oauth2.dto.aligenie.ReqPayload;
 import com.example.oauth2.service.IDeviceService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -61,7 +63,11 @@ public class DeviceServiceImpl implements IDeviceService {
         header.setName(header.getName() + "Response");
         result.setHeader(header);
         result.setPayload(new ControlRspDTO(aliGenieDTO.getPayload().getDeviceId()));
-
+        RestTemplate restTemplate = new RestTemplate();
+        String uri = "http://localhost:8888/push/";
+        if (StringUtils.isNotBlank(aliGenieDTO.getHeader().getName())) {
+            restTemplate.getForObject(uri + aliGenieDTO.getHeader().getName(), String.class);
+        }
         return result;
     }
 }
