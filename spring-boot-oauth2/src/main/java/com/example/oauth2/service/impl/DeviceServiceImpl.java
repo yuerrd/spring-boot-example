@@ -59,15 +59,21 @@ public class DeviceServiceImpl implements IDeviceService {
         AliGenieDTO<ControlRspDTO> result = new AliGenieDTO<>();
 
         Header header = aliGenieDTO.getHeader();
+        String uri = "http://localhost:8888/push/";
+        if (StringUtils.isNotBlank(header.getName())) {
+            RestTemplate restTemplate = new RestTemplate();
+            try {
+                restTemplate.getForObject(uri + header.getName(), String.class);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        }
 
         header.setName(header.getName() + "Response");
         result.setHeader(header);
         result.setPayload(new ControlRspDTO(aliGenieDTO.getPayload().getDeviceId()));
-        RestTemplate restTemplate = new RestTemplate();
-        String uri = "http://localhost:8888/push/";
-        if (StringUtils.isNotBlank(aliGenieDTO.getHeader().getName())) {
-            restTemplate.getForObject(uri + aliGenieDTO.getHeader().getName(), String.class);
-        }
+
         return result;
     }
 }
