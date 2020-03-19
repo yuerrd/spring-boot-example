@@ -9,5 +9,15 @@ management:
       exposure:
         include: "*"
   endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
     health:
       show-details: ALWAYS
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: ${spring.application.name}
